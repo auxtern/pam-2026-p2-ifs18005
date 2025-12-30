@@ -31,6 +31,9 @@ To build or run the project, use one of the following tasks:
 | `./gradlew run`                         | Run the server                                                       |
 | `./gradlew runDocker`                   | Run using the local docker image                                     |
 
+
+`kotlin -jar ./build/libs/pam-p2-ifs18005-all.jar`
+
 If the server starts successfully, you'll see the following output:
 
 ```

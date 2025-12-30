@@ -8,24 +8,21 @@ import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.plugins.cors.routing.CORS
 import kotlinx.serialization.json.Json
 import io.github.cdimascio.dotenv.dotenv
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.server.netty.EngineMain
 
 fun main(args: Array<String>) {
     val dotenv = dotenv {
-        directory = "./"
+        directory = "."
         ignoreIfMissing = false
     }
 
     dotenv.entries().forEach {
         System.setProperty(it.key, it.value)
     }
+//    val port = dotenv.get("APP_PORT").toInt()
+//    val host = dotenv.get("APP_HOST")
 
-    val port = System.getProperty("APP_PORT").toInt()
-    val host = System.getProperty("APP_HOST")
-    embeddedServer(Netty, port = port, host = host) {
-        module()
-    }.start(wait = true)
+    EngineMain.main(args)
 }
 
 fun Application.module() {
