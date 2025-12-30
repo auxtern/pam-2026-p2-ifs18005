@@ -12,7 +12,10 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 
 fun main(args: Array<String>) {
-    val dotenv = dotenv()
+    val dotenv = dotenv {
+        directory = "./"
+        ignoreIfMissing = false
+    }
 
     dotenv.entries().forEach {
         System.setProperty(it.key, it.value)
